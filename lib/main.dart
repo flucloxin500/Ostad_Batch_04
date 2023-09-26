@@ -10,124 +10,113 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Home(),
+      home: CounterScreen(),
     );
   }
 }
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
+
+  int counter = 0;
 
   @override
   Widget build(BuildContext context) {
-    /*
-    return CupertinoPageScaffold(
-      navigationBar: CupertinoNavigationBar(
-        leading: Icon(CupertinoIcons.home),
-        middle: Text('Home Screen'),
-        trailing: CupertinoSwitch(
-          onChanged: (bool onChange) {
-
-          }, value: true,
-        ),
-      ),
-
-        child: Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Hello World.!'),
-          Text('Hello World.!'),
-          Text('Hello World.!'),
-          Text('Hello World.!'),
-          CupertinoButton.filled(child: Text('Start'), onPressed: (){}),
-          CupertinoButton(child: Text('Start'), onPressed: (){}),
-          // Cupertino Text Field
-          CupertinoTextField(),
-          // bottom navigation
-          CupertinoTabBar(items: [
-            BottomNavigationBarItem(label: 'Home', icon: Icon(CupertinoIcons.home)),
-            BottomNavigationBarItem(label: 'Home', icon: Icon(CupertinoIcons.mail)),
-            BottomNavigationBarItem(label: 'Home', icon: Icon(CupertinoIcons.search)),
-          ])
-        ],
-      ),
-    ),
-    );
-  }
-     */
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Home'),
       ),
-      body: Column(
-        children: [
-          // Switch
-          Switch(value: true, onChanged: (bool value) {}),
-          // alert box
-          ElevatedButton(
-            onPressed: () {
-              showDialog(
-                  barrierDismissible: true,
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: Text('Alert'),
-                      content: Text('You are in danger.!'),
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            // hiding with cancel button
-                            Navigator.pop(context);
-                          },
-                          child: Text('Cancel'),
-                        ),
-                        TextButton(
-                          onPressed: () {},
-                          child: Text('Okay'),
-                        ),
-                      ],
-                    );
-                  });
-            },
-            child: Text('Show dialog'),
-          ),
-          // show dialg
-          ElevatedButton(onPressed: (){
-            showAboutDialog(context: context ,
-                applicationName: "Pikapie",
-                applicationVersion: '1.04.20',
-                children: [
-                  Text('This is good'),
-                ]);
-          }, child: Text('Show About'),),
-          // bottom sheet
-          ElevatedButton(onPressed: (){
-            showModalBottomSheet(
-                isDismissible: false,
-                barrierColor: Colors.black45,
-                backgroundColor: Colors.grey.shade50,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(16),
-                      topRight: Radius.circular(16),
-                    )
-                ),
-                context: context, builder: (context){
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    Center(
-                      child: Text('This is bottom sheet'),
-                    )
-                  ],
+      body: Center(
+        child: Text(
+          counter.toString(),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          counter = counter + 1;
+          print(counter);
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+/// 1. Extends stateful widget
+/// 2. Create a State
+
+class CounterScreen extends StatefulWidget {
+  const CounterScreen({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _CounterState();
+}
+
+/// state
+class _CounterState extends State<CounterScreen> {
+
+  int counter = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              counter.toString(),
+              style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold
+              ),
+            ),
+            ElevatedButton(onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) =>
+                      ProfileScreen(userName: 'Rabbi'),
                 ),
               );
-            });
-          }, child: Text('Show bottom sheet')),
-        ],
+            }, child: Text('Profile'))
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          counter = counter + 1;
+          setState(() {});
+        },
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+
+// Widget class
+class ProfileScreen extends StatefulWidget {
+  final String userName;
+  const ProfileScreen({super.key, required this.userName});
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+// state class -> widget class
+class _ProfileScreenState extends State<ProfileScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Profile'),
+      ),
+      body: Center(
+        child: Text(widget.userName),
       ),
     );
   }
