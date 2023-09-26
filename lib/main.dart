@@ -15,151 +15,127 @@ class HomeScreen extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: Center(
+        appBar: AppBar(
+          title: Text('Home'),
+        ),
+        body: Container(
+          decoration: BoxDecoration(
+              color: Colors.greenAccent
+          ),
+          child: Scrollbar(
+            thickness: 20,
+            radius: Radius.circular(10),
+            child: GridView(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 3),
+              children: [
+                Icon(Icons.add_business),
+                Container(
+                    decoration: BoxDecoration(
+                      color: Colors.black38,
+                      border: Border.all(color: Colors.amber,width: 2),
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Icon(Icons.add)),
+                Icon(Icons.ac_unit),
+                Icon(Icons.account_circle),
+                Icon(Icons.add_business_outlined),
+                Icon(Icons.account_balance_wallet_outlined),
+                Icon(Icons.abc),
+                Icon(Icons.adb_rounded),
+                Icon(Icons.accessibility_new_sharp),
+                Icon(Icons.add_business),
+                Icon(Icons.account_balance_wallet),
+                Icon(Icons.accessible_rounded),
+                Icon(Icons.add_card_outlined),
+                Icon(Icons.accessible_rounded),
+                Icon(Icons.add_chart_outlined),
+              ],
+            ),
+          ),
+        )
+      /*
+      Container(
+        decoration: BoxDecoration(
+          color: Colors.lightGreen
+        ),
+        child: Scrollbar(
+
+        child: SingleChildScrollView(
+
+          // direction of scroll area
+          scrollDirection: Axis.vertical,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Container(
-                width: 200,
-                height: 100,
-
-                /// adding anything in container, used child
-                child: Text('Hello',style: TextStyle(
-                  color: Colors.pink,
-                ),),
-                alignment: Alignment.center,
-                /// for all side
-                margin: EdgeInsets.all(16),
-                //padding: EdgeInsets.all(10),
-                /// for any single side
-                //padding: EdgeInsets.only(top: 10, bottom: 15),
-                /// for symmetrical
-                padding: EdgeInsets.symmetric(horizontal: 15,vertical: 10),
-                // for decoration colors can't be add outside of the decoration
+                margin: EdgeInsets.symmetric(vertical: 10,horizontal: 5),
 
                 decoration: BoxDecoration(
-                  color: Colors.amber,
-                  border: Border.all(color: Colors.black,
-                      width: 2 ),
-                  // for whole side
-                  ///borderRadius: BorderRadius.circular(15),
-                  //for single side
-                  borderRadius: BorderRadius.only
-                    (bottomLeft: Radius.circular(18),
-                      topRight: Radius.circular(18)),
-                  /// for all kind of shape
-                  //shape: BoxShape.circle
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.all(16),
-                child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.pink,
-                        textStyle: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w500
-                        ),
-                        padding: EdgeInsets.all(16),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(25)
-                        )
-                    ),
-                    onLongPress: (){
-                      print('Email Deleted');
-                    },
-                    onPressed: () {
-                      print('Email has been sent');
-                    }, child: Text('Send Email')),
-              ),
-              TextButton(
-                style: TextButton.styleFrom(
-                    foregroundColor: Colors.pink
-                ),
-                onPressed: (){
-                  print('Resend Email');
-                }, child: Text('Resend'),
-              ),
-              IconButton(onPressed: (){}, icon: Icon(Icons.add)),
-              OutlinedButton(
+                  color: Colors.blue,
+                  border: Border.all(color: Colors.black38,width: 2),
+                  borderRadius: BorderRadius.all(Radius.circular(48)),
 
-                  onLongPress: (){
-                    print('Longpress on outlined button');
+                ),
+                child: ListTile(
+                  title: Text('Username'),
+                  subtitle: Text('user@gmnail.com'),
+                  leading: Icon(Icons.adb_outlined),
+                  trailing: Icon(Icons.arrow_right_alt),
+                  onTap: (){
+                    print('Last Title pressed');
                   },
-                  onPressed: (){},
-                  child: Text('Outlined Button')),
-              // input
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  //maxLines: 5,
-                  style: TextStyle(
-                      color: Colors.white
-                  ),
-                  decoration: InputDecoration(
-                      fillColor: Colors.blue,
-                      filled: true,
-                      hintText: 'Enter your email address',
-                      hintStyle: TextStyle(
-                          color: Colors.white70
-                      ),
-                      suffixIcon: Icon(Icons.email_outlined, color: Colors.white70,),
-                      label: Text('Email address'),
-                      labelStyle: TextStyle(
-                          color: Colors.white70
-                      )
-                  ),
                 ),
               ),
-              /*SizedBox(
-                  height: 10.0,
-                  width: 10,
-                ),*/
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  // wrap with sizedbox is used for padding
-                  obscureText: true,
-                  controller: TextEditingController(),
-                  style: TextStyle(
-                      color: Colors.white
-                  ),
-                  decoration: InputDecoration(
-                    fillColor: Colors.green,
-                    filled: true,
-                    hintText: 'Enter your password',
-                    hintStyle: TextStyle(
-                        color: Colors.white70
-                    ),
-                    suffixIcon: Icon(Icons.password, color: Colors.white70,),
-                    label: Text('Password'),
-                    labelStyle: TextStyle(
-                        color: Colors.white
-                    ),
-                    border: OutlineInputBorder(),
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.white)
-                    ),
-                    disabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.red)
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Colors.green)
-                    ),
-                  ),
-                ),
+              Divider(
+                height: 5,
+                thickness: 1,
+                color: Colors.black38,
+                endIndent: 25,
+                indent: 16,
               ),
+              ListTile(
+                title: Text('Username'),
+                subtitle: Text('user@gmnail.com'),
+                leading: Icon(Icons.adb_outlined),
+                trailing: Icon(Icons.arrow_right_alt),
+                onTap: (){
+                  print('Last Title pressed');
+                },
+              ),
+              ListTile(
+                title: Text('Username'),
+                subtitle: Text('user@gmnail.com'),
+                leading: Icon(Icons.adb_outlined),
+                trailing: Icon(Icons.arrow_right_alt),
 
-            ],
-          )
-      ),
+                onTap: (){
+                  print('Last Title pressed');
+                },
+              ),
+              Divider(
+                height: 5,
+                thickness: 1,
+                color: Colors.pink,
+                endIndent: 25,
+                indent: 16,
+              ),
+              ListTile(
+                title: Text('Username'),
+                subtitle: Text('user@gmnail.com'),
+                leading: Icon(Icons.adb_outlined),
+                trailing: Icon(Icons.arrow_right_alt),
+                onTap: (){
+                  print('Last Title pressed');
+                },
+              ),
+          ],
+        ),
+    ),
+        ),
+
+     ),*/
     );
+
   }
 
 }
