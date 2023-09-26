@@ -1,227 +1,171 @@
+/// Module 05
+/// class 02
+
+// import 'package:flutter/material.dart';
+// void main (){
+//
+//   ///give some widget
+//   runApp(
+//   /// Material app
+//   //   MaterialApp(
+//   //     home: Scaffold(
+//   //       body: Center(
+//   //         child: Text('Hello World.!'),
+//   //       ),
+//   //     ),
+//   //   )
+//   // );
+//       MyApp()
+//   );
+// }
+// /// creating new widget
+//
+// // class MyApp extends Widget{
+// //   const MyApp({super.key});
+// //
+// //
+// //   @override
+// //   Element createElement() {
+// //     //
+// //     throw UnimplementedError();
+// //   }
+// //
+// //
+// // }
+//
+// /// stateless widget
+// /// basic screen
+// /// Hot reload => ctrl + s
+// /// Hot restart => ctrl+shift+\
+// class MyApp extends StatelessWidget{
+//
+//   @override
+//   Widget build(BuildContext context){
+//     return MaterialApp(
+//       /// checking debug mode
+//       debugShowCheckedModeBanner: true,
+//       home: Scaffold(
+//         /// for AppBar
+//         appBar: AppBar(
+//           /// for getting title in appbar
+//           title: Text('Home'),
+//         ),
+//         body: Center(
+//           child: Text('Hello Future'),
+//         ),
+//       ),
+//       /// for adding/changing app title
+//       title: 'My App',
+//     );
+//
+//   }
+// }
+
 import 'package:flutter/material.dart';
+void main (){
 
-/*class MyApp extends StatelessWidget {
+  ///give some widget
+  runApp(
+    /// Material app
+    //   MaterialApp(
+    //     home: Scaffold(
+    //       body: Center(
+    //         child: Text('Hello World.!'),
+    //       ),
+    //     ),
+    //   )
+    // );
+      MyApp()
+  );
+}
+/// creating new widget
+
+// class MyApp extends Widget{
+//   const MyApp({super.key});
+//
+//
+//   @override
+//   Element createElement() {
+//     //
+//     throw UnimplementedError();
+//   }
+//
+//
+// }
+
+/// stateless widget
+/// basic screen
+/// Hot reload => ctrl + s
+/// Hot restart => ctrl+shift+\
+class MyApp extends StatelessWidget{
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return MaterialApp(
-      debugShowCheckedModeBanner: true,
-      home: HomeScreen(),
-      title: 'Ostad App',
-    );
-  }
-}
+      /// checking debug mode
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        /// for background color
+        backgroundColor: Colors.blueGrey,
+        /// for AppBar
+        appBar: AppBar(
+          /// for appbar backgropund color
+          backgroundColor: Colors.amber,
+          /// for changing position of appBar title
+          centerTitle: true,
+          /// for getting title in appbar
+          title: Text('Home'),
+          // /// add leading text
+          // leading: Text('App'),
+          /// add leading icon
+          /// add leading color
+          /// add leading size
+          leading: Icon(Icons.adb_outlined,color: Colors.black,size: 20,),
 
-class HomeScreen extends StatefulWidget{
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  /// for listing student
-  List<String> students = [
-    'WALID',
-    'ARSHAD',
-    'JEETU',
-    'AHSAASY',
-    'DIPTO',
-  ];
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: Scrollbar(
-        thickness: 30,
-        radius: Radius.circular(10),
-        /// Listview separator
-        /// Listview builder
+        ),
+        /// we can add more alignnment from body
+        /// Center
+        body:
+        // Center()
+        // /// creating textStyle
+        // child: Text('Hello Future',style: TextStyle(
+        //   /// changing text color
+        //   color: Colors.blue,
+        //       /// changing font size
+        //       fontSize: 25 ,
+        //   /// changing fontweight
+        //   fontWeight: FontWeight.bold,
         //
-        child: ListView.separated(
-          itemCount: students.length,
-          itemBuilder: (context,index){
-
-            return ListTile(
-              onTap: (){
-                print('Touched builder');
-              },
-              title: Text(students[index])
-            );
-            },
-          separatorBuilder: (context,index){
-            return Divider();
-          },
-        ),
-        //child: ListView.builder(
-          // Listview.separated
-
-          //separatorBuilder: (context,index){
-          //   return Column(
-          //     children: [
-          //       Text(index.toString()),
-          //       Divider(),
-          //     ],
-          //   );
-            //return Divider();
-          //},
-          //itemCount: 18,
-            //itemBuilder: (context,index) {
-          //return ListTile(
-            //title: Text('Item number ${index}'),
-          //);
-        //},
-        //),
-        /*GridView.builder(
-          itemCount: 16,
-         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-           crossAxisCount: 2 ,
-         ),
-          itemBuilder: (context,index){
-           return Column(
-             children: [
-               Text(index.toString()),
-               Icon(Icons.adb_rounded),
-             ],
-           );
-          },
-
-        ),*/
-
-        ),
-      );
-
-  }
-}
-
- */
-/// Navigator ==> one page to another page
-/// Navigator 1(simnple and lengthy),2(complex)
-/// Router package ==>GoROuter,GetX,AutoRoute
-
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: HomeScreen(),
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        // ),),
+        /// colomn add
+        ///child: Column()
+        ///for vertical is Coloumn
+        /// for horizontal is ROw
+        Column(
           children: [
-            Text(
-              'Home',
-              style: TextStyle(fontSize: 24),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => SettingsScreen(),
-                  ),
-                );
-              },
-              child: Text('Go to settings'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => OrdersScreen(),
-                  ),
-                );
-              },
-              child: Text('Go to orders'),
-            ),
+            Text('Hello Future',style: TextStyle(
+              color: Colors.greenAccent,
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+            ),),
+            Text('Hello Future',style: TextStyle(
+              color: Colors.greenAccent,
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+            ),),
+            Text('Hello Future',style: TextStyle(
+              color: Colors.greenAccent,
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+            ),),
+            Icon(Icons.adb_outlined),
           ],
         ),
       ),
+      //),
+      /// for adding/changing app title
+      title: 'My App',
     );
-  }
-}
 
-class SettingsScreen extends StatelessWidget {
-  const SettingsScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Settings',
-              style: TextStyle(fontSize: 24),
-            ),ElevatedButton(onPressed: (){
-              //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
-              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomeScreen()), (route) => false);
-            }, child: Text('Home'))
-          ],
-        ),
-      ),
-    );
-  }
-}
-
-class OrdersScreen extends StatelessWidget {
-  const OrdersScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Orders'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Orders',
-              style: TextStyle(fontSize: 24),
-            ),
-            TextButton(
-              onPressed: () {
-
-                Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => SettingsScreen(),),);
-              },
-              child: Text('Go to settings'),
-            ),
-
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: Text('Back to home',
-                style: TextStyle(fontWeight: FontWeight.bold),),
-            ),
-          ],
-        ),
-      ),
-    );
   }
 }
