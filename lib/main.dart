@@ -1,113 +1,171 @@
+/// Module 05
+/// class 02
+
+// import 'package:flutter/material.dart';
+// void main (){
+//
+//   ///give some widget
+//   runApp(
+//   /// Material app
+//   //   MaterialApp(
+//   //     home: Scaffold(
+//   //       body: Center(
+//   //         child: Text('Hello World.!'),
+//   //       ),
+//   //     ),
+//   //   )
+//   // );
+//       MyApp()
+//   );
+// }
+// /// creating new widget
+//
+// // class MyApp extends Widget{
+// //   const MyApp({super.key});
+// //
+// //
+// //   @override
+// //   Element createElement() {
+// //     //
+// //     throw UnimplementedError();
+// //   }
+// //
+// //
+// // }
+//
+// /// stateless widget
+// /// basic screen
+// /// Hot reload => ctrl + s
+// /// Hot restart => ctrl+shift+\
+// class MyApp extends StatelessWidget{
+//
+//   @override
+//   Widget build(BuildContext context){
+//     return MaterialApp(
+//       /// checking debug mode
+//       debugShowCheckedModeBanner: true,
+//       home: Scaffold(
+//         /// for AppBar
+//         appBar: AppBar(
+//           /// for getting title in appbar
+//           title: Text('Home'),
+//         ),
+//         body: Center(
+//           child: Text('Hello Future'),
+//         ),
+//       ),
+//       /// for adding/changing app title
+//       title: 'My App',
+//     );
+//
+//   }
+// }
+
 import 'package:flutter/material.dart';
+void main (){
 
-void main() {
-  runApp(const MyApp());
+  ///give some widget
+  runApp(
+    /// Material app
+    //   MaterialApp(
+    //     home: Scaffold(
+    //       body: Center(
+    //         child: Text('Hello World.!'),
+    //       ),
+    //     ),
+    //   )
+    // );
+      MyApp()
+  );
 }
+/// creating new widget
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+// class MyApp extends Widget{
+//   const MyApp({super.key});
+//
+//
+//   @override
+//   Element createElement() {
+//     //
+//     throw UnimplementedError();
+//   }
+//
+//
+// }
 
-  // This widget is the root of your application.
+/// stateless widget
+/// basic screen
+/// Hot reload => ctrl + s
+/// Hot restart => ctrl+shift+\
+class MyApp extends StatelessWidget{
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
+      /// checking debug mode
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        /// for background color
+        backgroundColor: Colors.blueGrey,
+        /// for AppBar
+        appBar: AppBar(
+          /// for appbar backgropund color
+          backgroundColor: Colors.amber,
+          /// for changing position of appBar title
+          centerTitle: true,
+          /// for getting title in appbar
+          title: Text('Home'),
+          // /// add leading text
+          // leading: Text('App'),
+          /// add leading icon
+          /// add leading color
+          /// add leading size
+          leading: Icon(Icons.adb_outlined,color: Colors.black,size: 20,),
+
+        ),
+        /// we can add more alignnment from body
+        /// Center
+        body:
+        // Center()
+        // /// creating textStyle
+        // child: Text('Hello Future',style: TextStyle(
+        //   /// changing text color
+        //   color: Colors.blue,
+        //       /// changing font size
+        //       fontSize: 25 ,
+        //   /// changing fontweight
+        //   fontWeight: FontWeight.bold,
         //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a blue toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
+        // ),),
+        /// colomn add
+        ///child: Column()
+        ///for vertical is Coloumn
+        /// for horizontal is ROw
+        Column(
+          children: [
+            Text('Hello Future',style: TextStyle(
+              color: Colors.greenAccent,
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+            ),),
+            Text('Hello Future',style: TextStyle(
+              color: Colors.greenAccent,
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+            ),),
+            Text('Hello Future',style: TextStyle(
+              color: Colors.greenAccent,
+              fontSize: 22,
+              fontWeight: FontWeight.w700,
+            ),),
+            Icon(Icons.adb_outlined),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      //),
+      /// for adding/changing app title
+      title: 'My App',
     );
+
   }
 }
