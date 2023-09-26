@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class MyApp extends StatelessWidget {
+/*class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -11,135 +11,217 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends StatelessWidget{
+class HomeScreen extends StatefulWidget{
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  /// for listing student
+  List<String> students = [
+    'WALID',
+    'ARSHAD',
+    'JEETU',
+    'AHSAASY',
+    'DIPTO',
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text('Home'),
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: Scrollbar(
+        thickness: 30,
+        radius: Radius.circular(10),
+        /// Listview separator
+        /// Listview builder
+        //
+        child: ListView.separated(
+          itemCount: students.length,
+          itemBuilder: (context,index){
+
+            return ListTile(
+              onTap: (){
+                print('Touched builder');
+              },
+              title: Text(students[index])
+            );
+            },
+          separatorBuilder: (context,index){
+            return Divider();
+          },
         ),
-        body: Container(
-          decoration: BoxDecoration(
-              color: Colors.greenAccent
-          ),
-          child: Scrollbar(
-            thickness: 20,
-            radius: Radius.circular(10),
-            child: GridView(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3),
-              children: [
-                Icon(Icons.add_business),
-                Container(
-                    decoration: BoxDecoration(
-                      color: Colors.black38,
-                      border: Border.all(color: Colors.amber,width: 2),
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Icon(Icons.add)),
-                Icon(Icons.ac_unit),
-                Icon(Icons.account_circle),
-                Icon(Icons.add_business_outlined),
-                Icon(Icons.account_balance_wallet_outlined),
-                Icon(Icons.abc),
-                Icon(Icons.adb_rounded),
-                Icon(Icons.accessibility_new_sharp),
-                Icon(Icons.add_business),
-                Icon(Icons.account_balance_wallet),
-                Icon(Icons.accessible_rounded),
-                Icon(Icons.add_card_outlined),
-                Icon(Icons.accessible_rounded),
-                Icon(Icons.add_chart_outlined),
-              ],
-            ),
-          ),
-        )
-      /*
-      Container(
-        decoration: BoxDecoration(
-          color: Colors.lightGreen
+        //child: ListView.builder(
+          // Listview.separated
+
+          //separatorBuilder: (context,index){
+          //   return Column(
+          //     children: [
+          //       Text(index.toString()),
+          //       Divider(),
+          //     ],
+          //   );
+            //return Divider();
+          //},
+          //itemCount: 18,
+            //itemBuilder: (context,index) {
+          //return ListTile(
+            //title: Text('Item number ${index}'),
+          //);
+        //},
+        //),
+        /*GridView.builder(
+          itemCount: 16,
+         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+           crossAxisCount: 2 ,
+         ),
+          itemBuilder: (context,index){
+           return Column(
+             children: [
+               Text(index.toString()),
+               Icon(Icons.adb_rounded),
+             ],
+           );
+          },
+
+        ),*/
+
         ),
-        child: Scrollbar(
-
-        child: SingleChildScrollView(
-
-          // direction of scroll area
-          scrollDirection: Axis.vertical,
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.symmetric(vertical: 10,horizontal: 5),
-
-                decoration: BoxDecoration(
-                  color: Colors.blue,
-                  border: Border.all(color: Colors.black38,width: 2),
-                  borderRadius: BorderRadius.all(Radius.circular(48)),
-
-                ),
-                child: ListTile(
-                  title: Text('Username'),
-                  subtitle: Text('user@gmnail.com'),
-                  leading: Icon(Icons.adb_outlined),
-                  trailing: Icon(Icons.arrow_right_alt),
-                  onTap: (){
-                    print('Last Title pressed');
-                  },
-                ),
-              ),
-              Divider(
-                height: 5,
-                thickness: 1,
-                color: Colors.black38,
-                endIndent: 25,
-                indent: 16,
-              ),
-              ListTile(
-                title: Text('Username'),
-                subtitle: Text('user@gmnail.com'),
-                leading: Icon(Icons.adb_outlined),
-                trailing: Icon(Icons.arrow_right_alt),
-                onTap: (){
-                  print('Last Title pressed');
-                },
-              ),
-              ListTile(
-                title: Text('Username'),
-                subtitle: Text('user@gmnail.com'),
-                leading: Icon(Icons.adb_outlined),
-                trailing: Icon(Icons.arrow_right_alt),
-
-                onTap: (){
-                  print('Last Title pressed');
-                },
-              ),
-              Divider(
-                height: 5,
-                thickness: 1,
-                color: Colors.pink,
-                endIndent: 25,
-                indent: 16,
-              ),
-              ListTile(
-                title: Text('Username'),
-                subtitle: Text('user@gmnail.com'),
-                leading: Icon(Icons.adb_outlined),
-                trailing: Icon(Icons.arrow_right_alt),
-                onTap: (){
-                  print('Last Title pressed');
-                },
-              ),
-          ],
-        ),
-    ),
-        ),
-
-     ),*/
-    );
+      );
 
   }
-
 }
-void main (){
-  runApp(MyApp());
 
+ */
+/// Navigator ==> one page to another page
+/// Navigator 1(simnple and lengthy),2(complex)
+/// Router package ==>GoROuter,GetX,AutoRoute
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: HomeScreen(),
+    );
+  }
+}
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Home',
+              style: TextStyle(fontSize: 24),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => SettingsScreen(),
+                  ),
+                );
+              },
+              child: Text('Go to settings'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => OrdersScreen(),
+                  ),
+                );
+              },
+              child: Text('Go to orders'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SettingsScreen extends StatelessWidget {
+  const SettingsScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Settings',
+              style: TextStyle(fontSize: 24),
+            ),ElevatedButton(onPressed: (){
+              //Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> HomeScreen()));
+              Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder: (context) => HomeScreen()), (route) => false);
+            }, child: Text('Home'))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class OrdersScreen extends StatelessWidget {
+  const OrdersScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Orders'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Orders',
+              style: TextStyle(fontSize: 24),
+            ),
+            TextButton(
+              onPressed: () {
+
+                Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => SettingsScreen(),),);
+              },
+              child: Text('Go to settings'),
+            ),
+
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('Back to home',
+                style: TextStyle(fontWeight: FontWeight.bold),),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
