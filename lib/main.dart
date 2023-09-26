@@ -1,171 +1,112 @@
-/// Module 05
-/// class 02
-
-// import 'package:flutter/material.dart';
-// void main (){
-//
-//   ///give some widget
-//   runApp(
-//   /// Material app
-//   //   MaterialApp(
-//   //     home: Scaffold(
-//   //       body: Center(
-//   //         child: Text('Hello World.!'),
-//   //       ),
-//   //     ),
-//   //   )
-//   // );
-//       MyApp()
-//   );
-// }
-// /// creating new widget
-//
-// // class MyApp extends Widget{
-// //   const MyApp({super.key});
-// //
-// //
-// //   @override
-// //   Element createElement() {
-// //     //
-// //     throw UnimplementedError();
-// //   }
-// //
-// //
-// // }
-//
-// /// stateless widget
-// /// basic screen
-// /// Hot reload => ctrl + s
-// /// Hot restart => ctrl+shift+\
-// class MyApp extends StatelessWidget{
-//
-//   @override
-//   Widget build(BuildContext context){
-//     return MaterialApp(
-//       /// checking debug mode
-//       debugShowCheckedModeBanner: true,
-//       home: Scaffold(
-//         /// for AppBar
-//         appBar: AppBar(
-//           /// for getting title in appbar
-//           title: Text('Home'),
-//         ),
-//         body: Center(
-//           child: Text('Hello Future'),
-//         ),
-//       ),
-//       /// for adding/changing app title
-//       title: 'My App',
-//     );
-//
-//   }
-// }
-
 import 'package:flutter/material.dart';
-void main (){
 
-  ///give some widget
-  runApp(
-    /// Material app
-    //   MaterialApp(
-    //     home: Scaffold(
-    //       body: Center(
-    //         child: Text('Hello World.!'),
-    //       ),
-    //     ),
-    //   )
-    // );
-      MyApp()
-  );
-}
-/// creating new widget
-
-// class MyApp extends Widget{
-//   const MyApp({super.key});
-//
-//
-//   @override
-//   Element createElement() {
-//     //
-//     throw UnimplementedError();
-//   }
-//
-//
-// }
-
-/// stateless widget
-/// basic screen
-/// Hot reload => ctrl + s
-/// Hot restart => ctrl+shift+\
-class MyApp extends StatelessWidget{
-
+class MyApp extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return MaterialApp(
-      /// checking debug mode
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        /// for background color
-        backgroundColor: Colors.blueGrey,
-        /// for AppBar
-        appBar: AppBar(
-          /// for appbar backgropund color
-          backgroundColor: Colors.amber,
-          /// for changing position of appBar title
-          centerTitle: true,
-          /// for getting title in appbar
-          title: Text('Home'),
-          // /// add leading text
-          // leading: Text('App'),
-          /// add leading icon
-          /// add leading color
-          /// add leading size
-          leading: Icon(Icons.adb_outlined,color: Colors.black,size: 20,),
-
-        ),
-        /// we can add more alignnment from body
-        /// Center
-        body:
-        // Center()
-        // /// creating textStyle
-        // child: Text('Hello Future',style: TextStyle(
-        //   /// changing text color
-        //   color: Colors.blue,
-        //       /// changing font size
-        //       fontSize: 25 ,
-        //   /// changing fontweight
-        //   fontWeight: FontWeight.bold,
-        //
-        // ),),
-        /// colomn add
-        ///child: Column()
-        ///for vertical is Coloumn
-        /// for horizontal is ROw
-        Column(
-          children: [
-            Text('Hello Future',style: TextStyle(
-              color: Colors.greenAccent,
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-            ),),
-            Text('Hello Future',style: TextStyle(
-              color: Colors.greenAccent,
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-            ),),
-            Text('Hello Future',style: TextStyle(
-              color: Colors.greenAccent,
-              fontSize: 22,
-              fontWeight: FontWeight.w700,
-            ),),
-            Icon(Icons.adb_outlined),
-          ],
-        ),
-      ),
-      //),
-      /// for adding/changing app title
-      title: 'My App',
+      debugShowCheckedModeBanner: true,
+      home: HomeScreen(),
+      title: 'Ostad App',
     );
-
   }
+}
+
+class HomeScreen extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.blueGrey,
+      appBar: AppBar(
+        backgroundColor: Colors.teal,
+        leading: Icon(
+          Icons.account_balance_wallet_outlined,
+          color: Colors.lime,
+          size: 27,),
+        centerTitle: true,
+        title: Text('Homie',style: TextStyle(
+          color: Colors.black54,
+        ),),
+      ),
+      body: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text('Hello '),
+              Text('World.! '),
+            ],
+          ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Dear Practice')
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Text('Hello '),
+              Text('Class '),
+            ],
+          ),
+          Image.asset('images/test.jpg',width: 120,height: 90,fit: BoxFit.cover,),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              Image.network('https://www.bing.com/images/search?view=detailV2&ccid=1YM53mG1&id=BC6470C60B7A8615DA7155B539C4A122275DF649&thid=OIP.1YM53mG10H_U25iPjop83QHaEo&mediaurl=https%3a%2f%2fwww.thewowstyle.com%2fwp-content%2fuploads%2f2015%2f01%2fnature-images..jpg&cdnurl=https%3a%2f%2fth.bing.com%2fth%2fid%2fR.d58339de61b5d07fd4db988f8e8a7cdd%3frik%3dSfZdJyKhxDm1VQ%26pid%3dImgRaw%26r%3d0&exph=1800&expw=2880&q=images&simid=608024970036858528&FORM=IRPRST&ck=D0378EAF346D6D862EE51853DCE82E23&selectedIndex=0&idpp=overlayview&ajaxhist=0&ajaxserp=0',
+                width: 200,
+                height: 200,
+                fit: BoxFit.scaleDown,
+              ),
+            ],
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('To register, tap on '),
+              Text('Sign Up'),
+            ],
+          ),
+          RichText(text:
+          TextSpan(
+            style: TextStyle(fontSize: 20,color: Colors.lime),
+            children: [
+              TextSpan(
+                  text: 'Hello World!', style: TextStyle(color: Colors.cyanAccent)
+              ),
+              TextSpan(
+                  text: 'Namee', style: TextStyle(color: Colors.deepOrange)),
+              TextSpan(
+                  text: 'gfhg',
+                  style: TextStyle(
+                      fontSize: 23,
+                      color: Colors.blueGrey,
+                      fontWeight: FontWeight.w200)),
+            ],
+          ),
+          ),
+          RichText(text: TextSpan(
+              text: 'To register, tap on ',
+              children: [
+                TextSpan(
+                    text: 'Sign up',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18
+                    )
+                )
+              ]
+          ))
+        ],
+      ),
+    );
+  }
+
+}
+void main (){
+  runApp(MyApp());
+
 }
