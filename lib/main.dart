@@ -3,36 +3,29 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
-
 import 'home_Screen.dart';
 
 void main() {
-  runApp(
-      DevicePreview(
-        enabled: kDebugMode,
-          builder: (context) {
-            return MyApp() ;
-          }));
+  runApp(DevicePreview(
+      enabled: kDebugMode,
+      builder: (context) {
+        return MyApp();
+      }));
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context)
-  {
-
-    return Sizer(
-      builder: (context , orientation , deviceType) {
-        print(deviceType);
-        return MaterialApp(
-
-          locale: DevicePreview.locale(context),
-          builder: DevicePreview.appBuilder,
-          home: HomeScreen(),
-        );
-      }
-    );
+  Widget build(BuildContext context) {
+    return Sizer(builder: (context, orientation, deviceType) {
+      print(deviceType);
+      return MaterialApp(
+        locale: DevicePreview.locale(context),
+        builder: DevicePreview.appBuilder,
+        home: HomeScreen(),
+      );
+    });
   }
   // {
   //
@@ -43,5 +36,4 @@ class MyApp extends StatelessWidget {
   //             home: HomeScreen(),
   //           );
   //         }
-  }
-
+}
