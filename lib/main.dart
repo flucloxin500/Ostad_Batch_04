@@ -1,23 +1,23 @@
-import 'package:device_preview/device_preview.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:sizer/sizer.dart';
 
-import 'home_Screen.dart';
+import 'home_screen.dart';
+
+/// Todo Application
+/// CRUD Create, Read , Update , Delete
 
 void main() {
-  runApp(MyApp());
+  runApp(const TodoApp());
 }
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class TodoApp extends StatelessWidget {
+  const TodoApp({super.key});
 
   @override
   Widget build(BuildContext context) {
 
-      return const MaterialApp(
+      return MaterialApp(
         home: HomeScreen(),
       );
     }
-
 }
+
+
