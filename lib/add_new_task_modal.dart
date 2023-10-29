@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_project/todo.dart';
 
-class AddNewTaskModal extends StatelessWidget {
+class AddNewTaskModal extends StatefulWidget {
   const AddNewTaskModal({
     super.key,
+    required this.onAddTap,
   });
+
+  final Function(Todo) onAddTap ;
+
+  @override
+  State<AddNewTaskModal> createState() => _AddNewTaskModalState();
+
+  }
+
+  class _AddNewTaskModalState extends State<AddNewTaskModal> {
+  final TextEditingController todoTEController = TextEditingController();
+  final GlobalKey<FormState> _formkey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16.0),
-      child: Column(
+      child: Form(
+        key: _formkey,
+        child: Column(
         children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -32,11 +47,18 @@ class AddNewTaskModal extends StatelessWidget {
           ),
           TextFormField(
             maxLines: 4,
+            controller: todoTEController,
             decoration: InputDecoration(
               hintText: 'Enter your to do here',
               enabledBorder: OutlineInputBorder(),
               focusedBorder: OutlineInputBorder(),
             ),
+            validator: (String? value) {
+              if ( value?.isEmpty ?? true) {
+                return 'Enter a value' ;
+              }
+              return null;
+            },
           ),
           const SizedBox(
             height: 16,
@@ -45,10 +67,20 @@ class AddNewTaskModal extends StatelessWidget {
               width: double.infinity,
               height: 35,
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  if(_formkey.currentState!.validate()){
+                    Todo todo = Todo(details: todoTEController.text.trim(),
+                        createdDateTime: DateTime.now(),
+                        updatedDateTime: DateTime.now(),
+                    );
+                  widget.onAddTap(todo);
+                  Navigator.pop(context);
+                }
+                },
                 child: const Text('Add'),
-              )),
+              ),),
         ],
+      ),
       ),
     );
   }
