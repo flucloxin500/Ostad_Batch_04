@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_project/screens/product_list_screen.dart';
 
-void main (){
-  runApp(CrudApp());
+void main() {
+  runApp(const CrudApp());
 }
 
 class CrudApp extends StatelessWidget {
@@ -10,9 +10,8 @@ class CrudApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: ProductListScreen(),
     );
   }
 }
-

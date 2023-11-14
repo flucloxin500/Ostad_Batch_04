@@ -1,13 +1,14 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_project/screens/add_new_product_screen.dart';
 
-import '../screens/product_list_screen.dart';
+import 'package:flutter/material.dart';
+import '../screens/add_new_product_screen.dart';
+import '../screens/product.dart';
 
 class ProductItem extends StatelessWidget {
-  const ProductItem({super.key, required this.product});
+  const ProductItem(
+      {super.key, required this.product, required this.onPressDelete});
 
   final Product product;
+  final Function(String) onPressDelete;
 
   @override
   Widget build(BuildContext context) {
@@ -16,58 +17,58 @@ class ProductItem extends StatelessWidget {
         showDialog(
             context: context,
             builder: (context) {
-              return AlertDialog(
-                title: Text('Select Action'),
-                content: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    ListTile(
-                      title: Text('Edit'),
-                      leading: Icon(Icons.edit),
-                      onTap: () {
-                        Navigator.pop(context);
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const AddNewProductScreen()),
-                        );
-                      },
-                    ),
-                    Divider(
-                      height: 0,
-                    ),
-                    ListTile(
-                      title: Text('Delete'),
-                      leading: Icon(Icons.delete_outline),
-                      onTap: (){
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ],
-                ),
-              );
+              return productActionDialog(context);
             });
       },
       leading: Image.network(
-        '',
+        product.image,
         width: 80,
       ),
-      title: Text('Product name'),
+      title: Text(product.productName),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            children: [
-              Text('Product Code'),
-              SizedBox(width: 24,),
-              Text('Total Price'),
-            ],
-          ),
-          Text('Product Description')
+          Text(product.productCode),
+          Text('Total price : ${product.totalPRice}'),
+          Text('Quantity : ${product.quantity}'),
         ],
       ),
-      trailing: Text('\$120'),
+      trailing: Text('\$${product.unitPRice}'),
+    );
+  }
+
+  AlertDialog productActionDialog(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Select action'),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          ListTile(
+            title: const Text('Edit'),
+            leading: const Icon(Icons.edit),
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AddNewProductScreen(),
+                ),
+              );
+            },
+          ),
+          const Divider(
+            height: 0,
+          ),
+          ListTile(
+            title: const Text('Delete'),
+            leading: const Icon(Icons.delete_outline),
+            onTap: () {
+              Navigator.pop(context);
+              onPressDelete(product.id);
+            },
+          ),
+        ],
+      ),
     );
   }
 }
