@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../screens/add_new_product_screen.dart';
 import '../screens/product.dart';

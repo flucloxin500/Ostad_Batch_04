@@ -63,9 +63,11 @@ class _ProductListScreenState extends State<ProductListScreen> {
       appBar: AppBar(
         title: const Text('Product list'),
         actions: [
-          IconButton(onPressed: (){
-            getProductList();
-          }, icon: const Icon(Icons.refresh)),
+          IconButton(
+              onPressed: () {
+                getProductList();
+              },
+              icon: const Icon(Icons.refresh)),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -85,20 +87,20 @@ class _ProductListScreenState extends State<ProductListScreen> {
         },
         child: inProgress
             ? const Center(
-          child: CircularProgressIndicator(),
-        )
+                child: CircularProgressIndicator(),
+              )
             : ListView.separated(
-          itemCount: productList.length,
-          itemBuilder: (context, index) {
-            return ProductItem(
-              product: productList[index],
-              onPressDelete: (String productId) {
-                deleteProduct(productId);
-              },
-            );
-          },
-          separatorBuilder: (_, __) => const Divider(),
-        ),
+                itemCount: productList.length,
+                itemBuilder: (context, index) {
+                  return ProductItem(
+                    product: productList[index],
+                    onPressDelete: (String productId) {
+                      deleteProduct(productId);
+                    },
+                  );
+                },
+                separatorBuilder: (_, __) => const Divider(),
+              ),
       ),
     );
   }

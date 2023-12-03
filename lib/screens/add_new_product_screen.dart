@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_project/screens/product.dart';
 import 'package:http/http.dart';
@@ -15,11 +14,13 @@ class AddNewProductScreen extends StatefulWidget {
 class _AddNewProductScreenState extends State<AddNewProductScreen> {
   final TextEditingController _titleTEController = TextEditingController();
   final TextEditingController _imageTEController = TextEditingController();
-  final TextEditingController _productCodeTEController = TextEditingController();
+  final TextEditingController _productCodeTEController =
+      TextEditingController();
   final TextEditingController _quantityTEController = TextEditingController();
   final TextEditingController _priceTEController = TextEditingController();
   final TextEditingController _totalPriceTEController = TextEditingController();
-  final TextEditingController _descriptionTEController = TextEditingController();
+  final TextEditingController _descriptionTEController =
+      TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -42,10 +43,9 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
     final Response response = await post(
         Uri.parse('https://crud.teamrabbil.com/api/v1/CreateProduct'),
         headers: {
-          'Content-Type' : 'application/json',
+          'Content-Type': 'application/json',
         },
-        body: jsonEncode(inputMap)
-    );
+        body: jsonEncode(inputMap));
     print(response.request?.url);
     print(response.statusCode);
     if (response.statusCode == 200) {
@@ -83,24 +83,14 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
       _quantityTEController.text.trim(),
       _totalPriceTEController.text.trim(),
     );
-    // final Map<String, String> inputMap = {
-    //   "Img": _imageTEController.text.trim(),
-    //   "ProductCode": _productCodeTEController.text.trim(),
-    //   "ProductName": _titleTEController.text.trim(),
-    //   "Qty": _quantityTEController.text.trim(),
-    //   "TotalPrice": _totalPriceTEController.text.trim(),
-    //   "UnitPrice": _priceTEController.text.trim(),
-    // };
-
-    // print(inputMap);
 
     final Response response = await post(
-        Uri.parse('https://crud.teamrabbil.com/api/v1/UpdateProduct/${widget.product!.id}'),
+        Uri.parse(
+            'https://crud.teamrabbil.com/api/v1/UpdateProduct/${widget.product!.id}'),
         headers: {
-          'Content-Type' : 'application/json',
+          'Content-Type': 'application/json',
         },
-        body: jsonEncode(product.toJson())
-    );
+        body: jsonEncode(product.toJson()));
     print(response.request?.url);
     print(response.statusCode);
     if (response.statusCode == 200) {
@@ -209,28 +199,28 @@ class _AddNewProductScreenState extends State<AddNewProductScreen> {
                   width: double.infinity,
                   child: addInProgress
                       ? const Center(
-                    child: CircularProgressIndicator(),
-                  )
+                          child: CircularProgressIndicator(),
+                        )
                       : ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(vertical: 14),
-                        textStyle: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w600,
-                        )),
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        if (widget.product == null) {
-                          addNewProduct();
-                        } else {
-                          updateProduct();
-                        }
-                      }
-                    },
-                    child: widget.product != null
-                        ? const Text('Update')
-                        : const Text('Add'),
-                  ),
+                          style: ElevatedButton.styleFrom(
+                              padding: const EdgeInsets.symmetric(vertical: 14),
+                              textStyle: const TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.w600,
+                              )),
+                          onPressed: () {
+                            if (_formKey.currentState!.validate()) {
+                              if (widget.product == null) {
+                                addNewProduct();
+                              } else {
+                                updateProduct();
+                              }
+                            }
+                          },
+                          child: widget.product != null
+                              ? const Text('Update')
+                              : const Text('Add'),
+                        ),
                 )
               ],
             ),
